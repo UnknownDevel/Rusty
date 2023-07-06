@@ -17,17 +17,15 @@ fn main() {
 }
 
 fn find_term(search_term: &str, quote: &str) -> String {
-    let s = quote.split_whitespace();
     let s1 = quote.lines().collect::<Vec<_>>();
     let mut res: String = "".to_string();
-    let mut i = 1;
-    for a in s{
-        if a.contains("\n"){
-            i = i + 1;
-        } else if a.contains(search_term){
-            res = i.to_string() + ": " + s1[i];
-        } else{
-            ()
+    for a1 in 0..s1.len(){
+        for a in s1[a1].split_whitespace(){
+            if a.contains(search_term){
+                res = (a1+1).to_string() + ": " + s1[a1];
+            } else{
+                ()
+            }
         }
     }
     res
